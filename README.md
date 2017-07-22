@@ -3,7 +3,7 @@
 ### Still in development
 Webapp and API found [here](https://github.com/brodeynewman/pace)
 
-##Tech Stack So Far
+## Tech Stack So Far
 
 * Electron
 * React
