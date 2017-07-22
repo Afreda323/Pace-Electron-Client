@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Pace</title>
-    <style>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pace</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <style>
     body {
-        background: rgba(0, 0, 0, .9);
-        color: white;
-        margin: 50px;
-        -webkit-app-region: drag
+      color: white;
     }
-    </style>
-  </head>
-  <body>
-    <h1>Pace $</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-    <div id='root'></div>
-    <script> console.log(process)</script>
-    <script src="http://localhost:8080/bundle.js"></script>
-  </body>
+
+    .title {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      -webkit-user-select: none;
+      -webkit-app-region: drag;
+      color: rgba(255, 255, 255, .8);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      padding: 4px 0;
+      background: #1A1A1A
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">Pace</h1>
+  <div id='root'></div>
+  <script>
+    console.log(process)
+  </script>
+  <script src="http://localhost:8080/bundle.js"></script>
+</body>
+
 </html>
