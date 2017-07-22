@@ -1,0 +1,1 @@
+export const ADD_TRANS = 'add_trans'
