@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 import RaisedButton from "material-ui/RaisedButton";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
@@ -51,7 +51,7 @@ class Login extends Component {
           </div>
           <br />
           <small className="wrap__form__small">
-            Not a member? <a href="/signup">Sign Up!</a>
+            Not a member? <Link to="/signup">Sign Up!</Link>
           </small>
         </form>
       </div>
