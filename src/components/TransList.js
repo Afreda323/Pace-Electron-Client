@@ -7,7 +7,7 @@ const TransList = props => {
     <Paper zDepth={2}>
       <div>
         <h1>
-          Budget: {budget}
+          Budget: ${budget}
         </h1>
         <ul>
           {transactions.length > 0

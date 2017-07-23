@@ -5,8 +5,8 @@ import TransList from "../components/TransList";
 import Chart from "../components/Chart";
 import AddTrans from "../components/AddTrans";
 import BudgetEdit from "../components/BudgetEdit";
-import Week from '../components/Week'
-import Today from '../components/Todays'
+import Week from "../components/Week";
+import Today from "../components/Todays";
 
 class Dash extends Component {
   componentDidMount() {
@@ -24,16 +24,18 @@ class Dash extends Component {
     return (
       <div className="wrap--alt">
         <br />
-        <Today transactions={transactions}/>
         <br />
-        <Week transactions={transactions}/>
+        <Today transactions={transactions} />
+        <br />
+        <Week transactions={transactions} />
         <br />
         <TransList
           budget={budget}
           transactions={transactions}
           handleEdit={(transId, amt, desc) =>
             this.props.editTrans(token, userId, transId, amt, desc)}
-          handleDelete={transId => this.props.removeTrans(token, userId, transId)}
+          handleDelete={transId =>
+            this.props.removeTrans(token, userId, transId)}
         />
         <br />
         <BudgetEdit
@@ -41,7 +43,7 @@ class Dash extends Component {
           handleEdit={b => this.props.editBudget(userId, b, token)}
         />
         <br />
-        <Chart />
+        <Chart budget={budget} transactions={transactions} />
         <br />
         <AddTrans
           handleEdit={(amt, desc) => addTrans(userId, token, amt, desc)}

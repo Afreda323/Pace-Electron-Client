@@ -1,16 +1,9 @@
 import React from "react";
-import moment from "moment";
 import Paper from "material-ui/Paper";
+import { filtered } from "../util/filter";
 
 const Todays = ({ transactions }) => {
-  let total;
-  transactions.length > 1
-    ? (total = transactions
-        .filter(tr => moment(tr.timestamp).isSame(Date.now(), "day"))
-        .reduce((a, b) => ({ amount: a.amount + b.amount })).amount)
-    : transactions.length === 1
-      ? (total = transactions[0].amount)
-      : (total = "0");
+  let total = filtered(transactions, "day");
 
   return (
     <Paper zDepth={2}>
