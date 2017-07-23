@@ -100,6 +100,62 @@ export const editBudget = (userId, budget, token) => dispatch => {
     });
 };
 
-export const addTrans = (userId, transId, amount, desc) => {};
-export const editTrans = (userId, transId, amount, desc) => {};
-export const removeTrans = (userId, transId, amount, desc) => {};
+export const addTrans = (userId, token, amount, description) => dispatch => {
+  return axios
+    .post(
+      `${API_URL}/transaction/${userId}`,
+      { amount, description },
+      {
+        headers: {
+          Authorization: token
+        }
+      }
+    )
+    .then(() => {
+      dispatch(getData(token, userId));
+    })
+    .catch(e => {
+      return console.log(e);
+      //   dispatch(logout());
+    });
+};
+export const editTrans = (
+  token,
+  userId,
+  transId,
+  amount,
+  description
+) => dispatch => {
+  return axios
+    .patch(
+      `${API_URL}/transaction/${userId}/${transId}`,
+      { amount, description },
+      {
+        headers: {
+          Authorization: token
+        }
+      }
+    )
+    .then(() => {
+      dispatch(getData(token, userId));
+    })
+    .catch(e => {
+      return console.log(e);
+      //   dispatch(logout());
+    });
+};
+export const removeTrans = (token, userId, transId) => dispatch => {
+  return axios
+    .delete(`${API_URL}/transaction/${userId}/${transId}`, {
+      headers: {
+        Authorization: token
+      }
+    })
+    .then(() => {
+      dispatch(getData(token, userId));
+    })
+    .catch(e => {
+      return console.log(e);
+      //   dispatch(logout());
+    });
+};

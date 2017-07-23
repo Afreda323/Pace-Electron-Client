@@ -1,4 +1,4 @@
-import { GET_DATA, EDIT_BUDGET } from "../actions/types";
+import { GET_DATA, EDIT_BUDGET, ADD_TRANS } from "../actions/types";
 
 export default (state = { budget: 0, transactions: [] }, action) => {
   switch (action.type) {
@@ -16,6 +16,12 @@ export default (state = { budget: 0, transactions: [] }, action) => {
         budget
       };
     }
+    case ADD_TRANS:
+      const { amount, description } = action.payload;
+      return {
+        ...state,
+        transactions: [...state.transactions, { amount, description }]
+      };
     default:
       return state;
   }

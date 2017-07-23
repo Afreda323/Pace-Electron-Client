@@ -5,6 +5,8 @@ import TransList from "../components/TransList";
 import Chart from "../components/Chart";
 import AddTrans from "../components/AddTrans";
 import BudgetEdit from "../components/BudgetEdit";
+import Week from '../components/Week'
+import Today from '../components/Todays'
 
 class Dash extends Component {
   componentDidMount() {
@@ -13,19 +15,37 @@ class Dash extends Component {
     getData(token, userId);
   }
   render() {
-    const { budget, transactions } = this.props.transactions;
+    const {
+      transactions: { budget, transactions },
+      auth: { userId, token },
+      editBudget,
+      addTrans
+    } = this.props;
     return (
       <div className="wrap--alt">
         <br />
+        <Today transactions={transactions}/>
         <br />
-        <TransList budget={budget} transactions={transactions} />
+        <Week transactions={transactions}/>
+        <br />
+        <TransList
+          budget={budget}
+          transactions={transactions}
+          handleEdit={(transId, amt, desc) =>
+            this.props.editTrans(token, userId, transId, amt, desc)}
+          handleDelete={transId => this.props.removeTrans(token, userId, transId)}
+        />
+        <br />
         <BudgetEdit
           value={budget}
-          handleEdit={b =>
-            this.props.editBudget(this.props.auth.userId, b, this.props.auth.token)}
+          handleEdit={b => this.props.editBudget(userId, b, token)}
         />
+        <br />
         <Chart />
-        <AddTrans />
+        <br />
+        <AddTrans
+          handleEdit={(amt, desc) => addTrans(userId, token, amt, desc)}
+        />
       </div>
     );
   }
