@@ -9,11 +9,15 @@ import { connect } from "react-redux";
 import { signup } from "../actions";
 
 class Signup extends Component {
-//   checkForToken = () => {
-//     if (this.props.token) {
-//       this.props.history.replace("/secret");
-//     }
-//   };
+  constructor(props) {
+    super(props);
+    this.checkForToken = this.checkForToken.bind(this);
+  }
+  checkForToken() {
+    if (this.props.token) {
+      this.props.history.replace("/dash");
+    }
+  }
   render() {
     const {
       signup,
@@ -26,6 +30,7 @@ class Signup extends Component {
 
     return (
       <div className="wrap">
+        {this.checkForToken()}
         <form className="wrap__form" onSubmit={handleSubmit(signup)}>
           <h1 className="wrap__form__header">Sign Up</h1>
           <div>
@@ -73,10 +78,9 @@ class Signup extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({ auth }) {
   return {
-    token: state.auth.token,
-    success: state.auth.success
+    token: auth.token
   };
 }
 

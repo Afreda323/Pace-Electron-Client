@@ -4,8 +4,20 @@ import RaisedButton from "material-ui/RaisedButton";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import { validate, renderTextField } from "../util/form.js";
-import './index.css'
+
+import { login } from "../actions";
+
+import "./index.css";
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.checkForToken = this.checkForToken.bind(this);
+  }
+  checkForToken() {
+    if (this.props.token) {
+      this.props.history.replace("/dash");
+    }
+  }
   render() {
     const {
       login,
@@ -17,7 +29,8 @@ class Login extends Component {
     } = this.props;
     return (
       <div className="wrap">
-        <form className="wrap__form">
+        {this.checkForToken()}
+        <form className="wrap__form" onSubmit={handleSubmit(login)}>
           <h1 className="wrap__form__header">Login</h1>
           <div>
             <Field
@@ -63,7 +76,7 @@ function mapStateToProps(state) {
   return { token: state.auth.token };
 }
 
-export default connect(mapStateToProps)(
+export default connect(mapStateToProps, { login })(
   reduxForm({
     form: "login",
     validate

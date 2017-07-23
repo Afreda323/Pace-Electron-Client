@@ -114,6 +114,11 @@ a{
   justify-content: center;
   align-items: center;
 }
+.wrap--alt {
+    width: 100vw;
+  min-height: 100vh;
+  background-color: #212121;
+}
 .wrap__form {
   box-sizing: border-box;
   width: 350px;

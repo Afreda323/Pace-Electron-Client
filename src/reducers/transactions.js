@@ -1,14 +1,21 @@
-import {
-  LOGIN,
-  SIGNUP,
-  EDIT_BUDGET,
-  ADD_TRANS,
-  EDIT_TRANS,
-  REMOVE_TRANS
-} from "../actions/types";
+import { GET_DATA, EDIT_BUDGET } from "../actions/types";
 
-export default (state = [], action) => {
+export default (state = { budget: 0, transactions: [] }, action) => {
   switch (action.type) {
+    case GET_DATA:
+      const { budget, transactions } = action.payload;
+      return {
+        ...state,
+        budget,
+        transactions
+      };
+    case EDIT_BUDGET: {
+      const budget = action.payload;
+      return {
+        ...state,
+        budget
+      };
+    }
     default:
       return state;
   }

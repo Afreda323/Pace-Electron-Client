@@ -13,6 +13,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "public"),
     filename: "bundle.js",
+    historyApiFallback: true,
     setup() {
       spawn("electron", ["."], {
         shell: true,
