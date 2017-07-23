@@ -9,9 +9,13 @@ class BudgetEdit extends Component {
       value: this.props.value
     };
   }
+  handleEdit(e) {
+    e.preventDefault();
+    this.props.handleEdit(this.state.value);
+  }
   render() {
     return (
-      <form onSubmit={() => this.props.handleEdit(this.state.value)}>
+      <form onSubmit={this.handleEdit.bind(this)}>
         <h1>Update Weekly Budget</h1>
         <TextField
           type="number"

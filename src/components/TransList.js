@@ -1,4 +1,5 @@
 import React from "react";
+import Trans from "../components/Trans";
 
 const TransList = props => {
   const { budget, transactions } = props;
@@ -7,15 +8,11 @@ const TransList = props => {
       <h1>
         Budget: {budget}
       </h1>
-      {transactions.length > 0
-        ? transactions.map(tr =>
-            <p key={tr._id}>
-              {tr.amount}
-              <br />
-              {tr.description}
-            </p>
-          )
-        : ""}
+      <ul>
+        {transactions.length > 0
+          ? transactions.map(trans => <Trans key={trans._id} trans={trans} />)
+          : ""}
+      </ul>
     </div>
   );
 };

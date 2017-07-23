@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import TransList from "../components/TransList";
+import Chart from "../components/Chart";
+import AddTrans from "../components/AddTrans";
 import BudgetEdit from "../components/BudgetEdit";
 
 class Dash extends Component {
@@ -22,6 +24,8 @@ class Dash extends Component {
           handleEdit={b =>
             this.props.editBudget(this.props.auth.userId, b, this.props.auth.token)}
         />
+        <Chart />
+        <AddTrans />
       </div>
     );
   }
