@@ -14,4 +14,6 @@ Webapp and API found [here](https://github.com/brodeynewman/pace)
 * Chart.js
 
 ## Todo
-* Everything
+* Charts
+* Styling
+* Layout
